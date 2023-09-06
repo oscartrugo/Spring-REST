@@ -31,7 +31,7 @@ public class DependencyInjectionApplication {
 
 		Nido animalNido = context.getBean(Nido.class);
 		animalNido.imprimir();
-		context.getBean("qualifier", Animal.class);
+		//context.getBean("qualifier", Animal.class);
 	}
 
 }
