@@ -1,6 +1,7 @@
 package com.oscartrugo.di;
 
 import com.oscartrugo.di.atributo.Coche;
+import com.oscartrugo.di.profiles.EnvironmentService;
 import com.oscartrugo.di.qualifiers.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +16,9 @@ public class DependencyInjectionApplication {
 
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context = SpringApplication.run(DependencyInjectionApplication.class, args);
-		Coche coche = context.getBean(Coche.class); //Obtenemos los beans de la clase Coche
+		EnvironmentService environmentService = context.getBean(EnvironmentService.class);
+		log.info("Active environment: ".concat(environmentService.getEnvironment()));
+		/*		Coche coche = context.getBean(Coche.class); //Obtenemos los beans de la clase Coche
 		Perro perro = context.getBean(Perro.class);
 		Pajaro pajaro = context.getBean(Pajaro.class);
 		Avion avion = context.getBean(Avion.class);
@@ -30,7 +33,7 @@ public class DependencyInjectionApplication {
 		log.info("Objeto Animal - Perro {}", animal2.getNombre());
 
 		Nido animalNido = context.getBean(Nido.class);
-		animalNido.imprimir();
+		animalNido.imprimir();*/
 		//context.getBean("qualifier", Animal.class);
 	}
 
