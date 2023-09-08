@@ -3,6 +3,7 @@ package com.oscartrugo.di;
 import com.oscartrugo.di.atributo.Coche;
 import com.oscartrugo.di.profiles.EnvironmentService;
 import com.oscartrugo.di.qualifiers.*;
+import com.oscartrugo.di.scopes.EjemploScopeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -16,8 +17,14 @@ public class DependencyInjectionApplication {
 
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context = SpringApplication.run(DependencyInjectionApplication.class, args);
-		EnvironmentService environmentService = context.getBean(EnvironmentService.class);
-		log.info("Active environment: ".concat(environmentService.getEnvironment()));
+		EjemploScopeService ejemploScopeService = context.getBean(EjemploScopeService.class);
+		EjemploScopeService ejemploScopeService1 = context.getBean(EjemploScopeService.class);
+
+		log.info("Are beans equal {}", ejemploScopeService.equals(ejemploScopeService1));
+		log.info("Are beans == {} ", (ejemploScopeService == ejemploScopeService1) );
+
+
+
 		/*		Coche coche = context.getBean(Coche.class); //Obtenemos los beans de la clase Coche
 		Perro perro = context.getBean(Perro.class);
 		Pajaro pajaro = context.getBean(Pajaro.class);
