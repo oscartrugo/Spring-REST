@@ -1,5 +1,6 @@
 package com.oscartrugo.di;
 
+import com.oscartrugo.di.autowire.AreaCalculatorService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +21,8 @@ public class DependencyInjectionApplication {
 
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context = SpringApplication.run(DependencyInjectionApplication.class, args);
-		String nombreAplicacion = context.getBean(String.class);
+		AreaCalculatorService areaCalculatorService = context.getBean(AreaCalculatorService.class);
 
-		log.info("Nombre de la aplicación: " + nombreAplicacion);
+		log.info("Area total: " + areaCalculatorService.calcArea());
 	}
 }
