@@ -7,6 +7,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.expression.Expression;
+import org.springframework.expression.ExpressionParser;
+import org.springframework.expression.spel.standard.SpelExpressionParser;
 
 @SpringBootApplication
 public class DependencyInjectionApplication {
@@ -19,9 +22,8 @@ public class DependencyInjectionApplication {
 	}
 
 	public static void main(String[] args) {
-		ConfigurableApplicationContext context = SpringApplication.run(DependencyInjectionApplication.class, args);
-		AreaCalculatorService areaCalculatorService = context.getBean(AreaCalculatorService.class);
-
-		log.info("Area total: " + areaCalculatorService.calcArea());
+		ExpressionParser parser = new SpelExpressionParser();
+		Expression expression = parser.parseExpression("10 + 20");
+		log.info("Result {}", expression.getValue());
 	}
 }
