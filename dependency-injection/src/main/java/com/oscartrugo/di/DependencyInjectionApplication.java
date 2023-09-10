@@ -1,6 +1,7 @@
 package com.oscartrugo.di;
 
 import com.oscartrugo.di.autowire.AreaCalculatorService;
+import com.oscartrugo.di.lifecycle.LifeCycleBean;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -22,8 +23,7 @@ public class DependencyInjectionApplication {
 	}
 
 	public static void main(String[] args) {
-		ExpressionParser parser = new SpelExpressionParser();
-		Expression expression = parser.parseExpression("10 + 20");
-		log.info("Result {}", expression.getValue());
+		ConfigurableApplicationContext context = SpringApplication.run(DependencyInjectionApplication.class, args);
+		LifeCycleBean bean = context.getBean(LifeCycleBean.class);
 	}
 }
