@@ -1,5 +1,7 @@
 package com.oscartrugo.di.lifecycle;
 
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanNameAware;
@@ -13,5 +15,15 @@ public class LifeCycleBean implements BeanNameAware {
     @Override
     public void setBeanName(String name) {
         log.info("Bean name {}", name);
+    }
+
+    @PostConstruct
+    public void init(){
+        log.info("Post construct");
+    }
+
+    @PreDestroy
+    public void destroy(){
+        log.info("Pre destroy");
     }
 }
