@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 //@Scope("prototype") Recordemos que PreDestroy no se ejecuta para beans de tipo Prototype
-@Lazy //Si el bean es lazy no se inicializará a menos que lo inyecte
+@Lazy(value = false) //Si el bean es lazy no se inicializará a menos que lo inyecte
 public class LifeCycleBean implements BeanNameAware, InitializingBean, DisposableBean {
 
     private static final Logger log = LoggerFactory.getLogger(LifeCycleBean.class);
