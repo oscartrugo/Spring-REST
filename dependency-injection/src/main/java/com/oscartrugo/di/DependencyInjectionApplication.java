@@ -1,5 +1,6 @@
 package com.oscartrugo.di;
 
+import com.oscartrugo.di.aop.TargetObject;
 import com.oscartrugo.di.lifecycle.ExplicitBean;
 import com.oscartrugo.di.lifecycle.LifeCycleBean;
 import org.slf4j.Logger;
@@ -16,5 +17,8 @@ public class DependencyInjectionApplication {
 
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context = SpringApplication.run(DependencyInjectionApplication.class, args);
+		TargetObject targetObject = context.getBean(TargetObject.class);
+		targetObject.hello("Hello world");
+		targetObject.foo();
 	}
 }
