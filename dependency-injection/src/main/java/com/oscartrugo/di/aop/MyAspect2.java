@@ -19,7 +19,7 @@ public class MyAspect2 {
     private static final Logger log = LoggerFactory.getLogger(DependencyInjectionApplication.class);
 
     //Si en vez de hello ponemos *, aplica el before advice para todos los métodos
-    @Before("execution(* com.oscartrugo.di.aop.TargetObject.hello(..))")
+    @Before("PointcutExample.targetObjectMethods()")
     public void before(JoinPoint jointPoint) {
         log.info("1 Method name {}", jointPoint.getSignature().getName());
         log.info("1 Object type {}", jointPoint.getSignature().getDeclaringTypeName());
