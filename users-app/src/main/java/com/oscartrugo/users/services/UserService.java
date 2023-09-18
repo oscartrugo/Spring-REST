@@ -36,7 +36,14 @@ public class UserService {
                 .findAny()
                 .orElseThrow(
                         () -> new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("User %s not found", username))
-                )
-        ;
+                );
+    }
+
+    public User createUser(User user){
+        if(users.stream().anyMatch(u -> u.getUsername().equals(user.getUsername()))){ //Si el objeto ua existe...
+            throw new ResponseStatusException(HttpStatus.CONFLICT, String.format("User %s already exists", user.getUsername())); //Manda un error
+        }
+        users.add(user); //Añade el user a la lista si no existe
+        return user;
     }
 }
