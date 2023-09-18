@@ -1,4 +1,4 @@
-package com.oscartrugo.users.controller;
+package com.oscartrugo.users.controllers;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
