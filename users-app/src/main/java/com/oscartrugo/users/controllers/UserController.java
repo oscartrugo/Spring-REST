@@ -17,10 +17,16 @@ public class UserController {
     private UserService userService; //Inyección de dependencia userService
 
     @GetMapping
-    public ResponseEntity<List<User>> get(){ //Handler method - Método HTTP + Recurso
-        return new ResponseEntity<>(userService.getUsers(), HttpStatus.OK);
+    public ResponseEntity<List<User>> getUsers(@RequestParam(value = "startWith", required = false) String startWith){ //Handler method - Método HTTP + Recurso
+        return new ResponseEntity<>(userService.getUsers(startWith), HttpStatus.OK);
     }
+    /*Path param
+    localhost:8080/users/oscartrugo/emails/10
 
+    Dame el email con id=10 de oscartrugo
+
+    Query param
+    localhost:8080/users/oscartrugo/emails?startDate=19-08-2023&endDate=20-08-2023*/
     @GetMapping(value = "/{username}") //Pasamos el username por el url
     public ResponseEntity<User> getUserByUsername(@PathVariable("username") String username){ //Inyectamos el valor de {username} en el método
         return new ResponseEntity<>(userService.getUserByUsername(username), HttpStatus.OK);

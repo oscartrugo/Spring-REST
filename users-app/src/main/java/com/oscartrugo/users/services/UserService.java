@@ -10,6 +10,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService {
@@ -26,8 +27,13 @@ public class UserService {
         }
     }
 
-    public List<User> getUsers() {
-        return users;
+    public List<User> getUsers(String startWith) {
+        if(startWith != null){
+            return users.stream().filter(u -> u.getUsername().startsWith(startWith)).collect(Collectors.toList());
+        }else{
+            return users;
+        }
+
     }
 
     public User getUserByUsername(String username){
