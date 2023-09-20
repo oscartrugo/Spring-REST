@@ -46,4 +46,12 @@ public class UserService {
         users.add(user); //Añade el user a la lista si no existe
         return user;
     }
+
+    public User updateUser(User user, String username){
+        User userToBeUpdated = getUserByUsername(username);
+        userToBeUpdated.setNickname(user.getNickname());
+        userToBeUpdated.setPassword(user.getPassword());
+
+        return userToBeUpdated;
+    }
 }
