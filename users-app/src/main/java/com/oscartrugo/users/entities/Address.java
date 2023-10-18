@@ -22,6 +22,7 @@ public class Address {
     private String city;
 
     @ManyToOne
+    @JoinColumn(name = "profile_id", referencedColumnName = "id")
     private Profile profile;
 
     public Integer getId() {

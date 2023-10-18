@@ -19,7 +19,7 @@ public class User {
     private String password;
 
     @OneToOne
-    @JoinColumn(name = "profile_id", referencedColumnName = "")
+    @JoinColumn(name = "profile_id", referencedColumnName = "id")
     private Profile profile;
 
     public Integer getId() {
