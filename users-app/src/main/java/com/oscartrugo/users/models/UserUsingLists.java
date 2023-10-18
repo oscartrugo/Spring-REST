@@ -1,14 +1,14 @@
 package com.oscartrugo.users.models;
 
-public class User {
+public class UserUsingLists {
     private String nickname;
     private String username;
     private String password;
 
-    public User() {
+    public UserUsingLists() {
     }
 
-    public User(String nickname, String username, String password) {
+    public UserUsingLists(String nickname, String username, String password) {
         this.nickname = nickname;
         this.username = username;
         this.password = password;
