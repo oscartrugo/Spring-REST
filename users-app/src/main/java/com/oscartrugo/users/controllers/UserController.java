@@ -18,8 +18,15 @@ public class UserController {
     private UserService service;
 
     @GetMapping
-    public ResponseEntity<Page<User>> getUsers(@RequestParam("page") int page, @RequestParam("size") int size){
+    public ResponseEntity<Page<User>> getUsers(@RequestParam(required = false, value = "page", defaultValue = "0") int page,
+                                               @RequestParam(required = false, value = "size", defaultValue = "1000") int size){
         return new ResponseEntity<>(service.getUsers(page, size), HttpStatus.OK);
+    }
+
+    @GetMapping("/usernames")
+    public ResponseEntity<Page<String>> getUsernames(@RequestParam(required = false, value = "page", defaultValue = "0") int page,
+                                                     @RequestParam(required = false, value = "size", defaultValue = "1000") int size){
+        return new ResponseEntity<>(service.getUsernames(page, size), HttpStatus.OK);
     }
 
     @GetMapping("/{userId}")

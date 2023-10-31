@@ -19,9 +19,12 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public Page<User> getUsers(@RequestParam(required = false, value = "page", defaultValue = 0) int page,
-                               @RequestParam(required = false, value = "size", defaultValue = "1000") int size){
+    public Page<User> getUsers(int page, int size){
         return userRepository.findAll(PageRequest.of(page, size));
+    }
+
+    public Page<String> getUsernames(int page, int size){
+        return userRepository.findUsernames(PageRequest.of(page, size));
     }
 
     public User getUserById(Integer userId){
