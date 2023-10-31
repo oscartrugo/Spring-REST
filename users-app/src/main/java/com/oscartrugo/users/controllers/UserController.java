@@ -2,8 +2,8 @@ package com.oscartrugo.users.controllers;
 
 import com.oscartrugo.users.entities.User;
 import com.oscartrugo.users.services.UserService;
-import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,8 +18,8 @@ public class UserController {
     private UserService service;
 
     @GetMapping
-    public ResponseEntity<List<User>> getUsers(){
-        return new ResponseEntity<>(service.getUsers(), HttpStatus.OK);
+    public ResponseEntity<Page<User>> getUsers(@RequestParam("page") int page, @RequestParam("size") int size){
+        return new ResponseEntity<>(service.getUsers(page, size), HttpStatus.OK);
     }
 
     @GetMapping("/{userId}")
