@@ -2,6 +2,7 @@ package com.oscartrugo.users.controllers;
 
 import com.oscartrugo.users.entities.User;
 import com.oscartrugo.users.services.UserService;
+import io.micrometer.core.annotation.Timed;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -18,6 +19,7 @@ public class UserController {
     private UserService service;
 
     @GetMapping
+    @Timed("get.users")
     public ResponseEntity<Page<User>> getUsers(@RequestParam(required = false, value = "page", defaultValue = "0") int page,
                                                @RequestParam(required = false, value = "size", defaultValue = "1000") int size){
         return new ResponseEntity<>(service.getUsers(page, size), HttpStatus.OK);
