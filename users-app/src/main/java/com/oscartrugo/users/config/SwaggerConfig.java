@@ -20,7 +20,8 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(getApiInfo())
                 .select().apis(RequestHandlerSelectors.basePackage("com.oscartrugo.users.controllers"))
-                .paths(PathSelectors.any()).build();//.paths(PathSelectors.ant("/users/*")).build(); Sólo se exponen los que van después de /users/
+                .paths(PathSelectors.any()).build()//.paths(PathSelectors.ant("/users/*")).build(); Sólo se exponen los que van después de /users/
+                .useDefaultResponseMessages(false);
     }
 
     private ApiInfo getApiInfo(){
