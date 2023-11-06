@@ -19,8 +19,8 @@ public class SwaggerConfig {
     public Docket getDocket(){
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(getApiInfo())
-                .select().apis(RequestHandlerSelectors.any())
-                .paths(PathSelectors.any()).build();
+                .select().apis(RequestHandlerSelectors.basePackage("com.oscartrugo.users.controllers"))
+                .paths(PathSelectors.any()).build();//.paths(PathSelectors.ant("/users/*")).build(); Sólo se exponen los que van después de /users/
     }
 
     private ApiInfo getApiInfo(){
